@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
+
 export default function Home() {
   return (
-    <p>Hello World! SaaS GPT clone coming soon!</p>
+    <Button variant="default" size="lg">Click me!</Button>
   );
 }
