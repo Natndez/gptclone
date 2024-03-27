@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Project Information
+This is an application intented to be a clone of ChatGPT. It is the first of many SaaS projects that I would like to complete!
+
+### next.js project info:
 
 ## Getting Started
 
