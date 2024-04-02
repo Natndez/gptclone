@@ -40,5 +40,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## Time Stamp:
-- 16:30
+- 24:15
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
