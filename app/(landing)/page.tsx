@@ -11,11 +11,9 @@ const LandingPage = () => {
                         Login
                     </Button>
                 </Link>
-            </div>
-            <div>
                 <Link href="/sign-up">
                     <Button>
-                        Sign Up!
+                        Register
                     </Button>
                 </Link>
             </div>
