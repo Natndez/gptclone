@@ -11,8 +11,11 @@ const Navbar = () => {
             className="md:hidden">
                 <Menu />
             </Button>
+            {/* Adding UserButton from Clerk */}
             <div className="flex w-full justify-end">
+                {/* Setting path back to '/' after signing out */}
                 <UserButton afterSignOutUrl="/"/>
+
             </div>
         </div>
     )

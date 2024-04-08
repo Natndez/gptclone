@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar"
+import Sidebar from "@/components/sidebar"
 
 // Setting up layout for our dashboard
 
@@ -14,10 +15,7 @@ const DashboardLayout = ({
             {/* Sidebar Hidden by default for smaller devices, md: classes for bigger screens */}
             <div className="hidden h-full md:flex md:w-72
             md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
-                <div>
-                    {/* Creating sidebar here */}
-                    Hello Sidebar
-                </div>
+                <Sidebar/>
             </div>
             {/* Setting up main content */}
             <main className="md:pl-72">
