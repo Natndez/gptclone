@@ -1,7 +1,15 @@
 "use client"; // Client component
 
+// Global imports
 import Image from "next/image";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
+
+// Personal imports
+import { cn } from "@/lib/utils";
+
+// Monterrat font
+const montserrat = Montserrat({ weight: "600", subsets: ["latin"]});
 
 const Sidebar = () => {
     return (
@@ -16,6 +24,11 @@ const Sidebar = () => {
                             src="/logo.png"
                         />
                     </div>
+                    {/* Using 'cn' to use our montserrat font... use the following convention to do so while still using shadcn classes */}
+                    <h1 className={cn("text-2xl font-bold",
+                        montserrat.className)}>
+                        Genie
+                    </h1>
                 </Link>
             </div>
         </div>
