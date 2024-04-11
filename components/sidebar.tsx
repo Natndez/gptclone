@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, MessageCircle } from "lucide-react";
 
 // More imports
 import { cn } from "@/lib/utils";
@@ -20,6 +20,12 @@ const routes = [
         icon: LayoutDashboard,
         href: "/dashboard",
         color: "text-pink-500",
+    },
+    {
+        label: "Chat",
+        icon: MessageCircle,
+        href: "/dashboard",
+        color: "text-violet-500",
     },
 ];
 
