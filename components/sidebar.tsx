@@ -4,10 +4,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
-
-// Personal imports
-import { cn } from "@/lib/utils";
 import { LayoutDashboard } from "lucide-react";
+
+// More imports
+import { cn } from "@/lib/utils";
+
 
 // Monterrat font
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"]});
