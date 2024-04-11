@@ -51,7 +51,7 @@ const Sidebar = () => {
                             key={route.href}
                             className="text-sm group flex p-3 w-full
                             justify-start font-medium cursor-pointer
-                            hover:text-white hover:bg-white/10 rounder-lg
+                            hover:text-white hover:bg-white/10 rounded-lg
                             transition"
                         >
                             {/* Setting up logo and label for each route */}
