@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"]});
 
 // Setting up array of objects for our routes
+// TODO: Come up with "Genie" themed names for each route"
 const routes = [
     {
         label: "Dashboard",
@@ -24,38 +25,38 @@ const routes = [
     {
         label: "Chat",
         icon: MessageCircle,
-        href: "/dashboard",
+        href: "/chat",
         color: "text-violet-500",
     },
     {
         label: "Image Generator",
         icon: ImageIcon,
-        href: "/dashboard",
+        href: "/image",
         color: "text-sky-600",
     },
     {
         label: "Video Generator",
         icon: VideoIcon,
-        href: "/dashboard",
+        href: "/video",
         color: "text-orange-700",
     },
     {
         label: "Music Generator",
         icon: Music,
-        href: "/dashboard",
+        href: "/music",
         color: "text-emerald-400",
     },
     {
         label: "Code Generator",
         icon: Code,
-        href: "/dashboard",
+        href: "/code",
         color: "text-red-400",
     },
     {
         label: "Settings",
         icon: Settings,
-        href: "/dashboard",
-        color: "text-gray-800",
+        href: "/settings",
+        color: "text-white-900",
     },
 ];
 
