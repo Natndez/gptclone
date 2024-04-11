@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import { LayoutDashboard, MessageCircle } from "lucide-react";
+import { Code, ImageIcon, LayoutDashboard, MessageCircle, Music, Settings, VideoIcon } from "lucide-react";
 
 // More imports
 import { cn } from "@/lib/utils";
@@ -26,6 +26,36 @@ const routes = [
         icon: MessageCircle,
         href: "/dashboard",
         color: "text-violet-500",
+    },
+    {
+        label: "Image Generator",
+        icon: ImageIcon,
+        href: "/dashboard",
+        color: "text-sky-600",
+    },
+    {
+        label: "Video Generator",
+        icon: VideoIcon,
+        href: "/dashboard",
+        color: "text-orange-700",
+    },
+    {
+        label: "Music Generator",
+        icon: Music,
+        href: "/dashboard",
+        color: "text-emerald-400",
+    },
+    {
+        label: "Code Generator",
+        icon: Code,
+        href: "/dashboard",
+        color: "text-red-400",
+    },
+    {
+        label: "Settings",
+        icon: Settings,
+        href: "/dashboard",
+        color: "text-gray-800",
     },
 ];
 
