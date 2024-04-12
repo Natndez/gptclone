@@ -3,6 +3,8 @@ import Sidebar from "@/components/sidebar"
 
 // Setting up layout for our dashboard
 
+// TODO: Figure out issue with page rendering
+
 const DashboardLayout = ({
     // Setting up children so we can load (routes)/dashboard/page.tsx inside this page
     children
