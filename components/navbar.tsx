@@ -1,18 +1,14 @@
-// Setting up Navbar for reusability
-
-import { Button } from "@/components/ui/button"
+// Setting up Navbar Component
 import { UserButton } from "@clerk/nextjs";
-import { Menu } from "lucide-react"
+
+import MobileSidebar from "@/components/mobile-sidebar";
 
 // Figure out some aesthetic details
 
 const Navbar = () => {
     return (
         <div className="flex items-center p-4">
-            <Button variant="ghost" size="icon"
-            className="md:hidden">
-                <Menu />
-            </Button>
+            <MobileSidebar />
             {/* Adding UserButton from Clerk */}
             <div className="flex w-full justify-end">
                 {/* Setting path back to '/' after signing out */}
