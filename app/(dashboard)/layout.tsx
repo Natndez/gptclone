@@ -19,7 +19,7 @@ const DashboardLayout = ({
             md:flex-col md:fixed md:inset-y-0 z-[80] bg-gray-900">
                 <Sidebar/>
             </div>
-            {/* Setting up main content */}
+            {/* Render Navbar component instead of Sidebar component for devices with smaller screens */}
             <main className="md:pl-72">
                 <Navbar />
                 {children}
