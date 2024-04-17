@@ -8,6 +8,7 @@ import { Code, ImageIcon, LayoutDashboard, MessageCircle, Music, Settings, Video
 
 // More imports
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 
 // Monterrat font
@@ -61,6 +62,8 @@ const routes = [
 ];
 
 const Sidebar = () => {
+    // Using react/navigation's usePathname to store the current path
+    const pathname = usePathname();
     return (
         <div className="space-y-4 py-4 flex flex-col h-full
         bg-[#111827] text-white">
@@ -86,10 +89,10 @@ const Sidebar = () => {
                         <Link
                             href={route.href}
                             key={route.href}
-                            className="text-sm group flex p-3 w-full
-                            justify-start font-medium cursor-pointer
-                            hover:text-white hover:bg-white/10 rounded-lg
-                            transition"
+                            // Using cn to dynamically assign pathnames
+                            className={cn("text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                            pathname === route.href ? "text-white bg-white/10" : "text-zinc-400" // To highlight current route    
+                            )}
                         >
                             {/* Setting up logo and label for each route */}
                             <div className="flex items-center flex-1">
