@@ -5,10 +5,22 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/sidebar";
+import { useEffect, useState } from "react";
 
 
 // TODO: Fix color issues on sidebar (e.g. close button)
 const MobileSidebar = () => {
+    
+    // To handle Hydration Error associated with MobileSidebar (can be used to fix most components giving hydration errors)
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if(!isMounted) {
+        return null;
+    }
+ 
     return (
         // Wrap all Sheet component
         <Sheet>
