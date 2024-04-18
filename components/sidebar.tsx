@@ -89,7 +89,7 @@ const Sidebar = () => {
                         <Link
                             href={route.href}
                             key={route.href}
-                            // Using cn to dynamically assign pathnames
+                            // Using cn to dynamically assign classes (highlights current tab)
                             className={cn("text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
                             pathname === route.href ? "text-white bg-white/10" : "text-zinc-400" // To highlight current route    
                             )}
