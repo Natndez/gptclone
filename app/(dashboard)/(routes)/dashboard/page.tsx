@@ -3,16 +3,44 @@
 // Creating tools object (for various functionalities of the "Genie")
 const tools = [
     {
-        label: "Conversation",
+        label: "Chat",
         icon: MessageCircle,
         color: "text-violet-500",
         bgColor: "bg-violet-500/10",
-        href: "/conversation"
-    }
+        href: "/chat"
+    },
+    {
+        label: "Image Generator",
+        icon: ImageIcon,
+        color: "text-sky-600",
+        bgColor: "bg-sky-600/10",
+        href: "/image" 
+    },
+    {
+        label: "Video Generator",
+        icon: VideoIcon,
+        color: "text-orange-700",
+        bgColor: "bg-orange-700/10",
+        href: "/video" 
+    },
+    {
+        label: "Music Generator",
+        icon: Music,
+        color: "text-emerald-400",
+        bgColor: "bg-emerald-400/10",
+        href: "/music" 
+    },
+    {
+        label: "Code Creation",
+        icon: Code,
+        color: "text-red-400",
+        bgColor: "bg-red-400/10",
+        href: "/code" 
+    },
 ]
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Code, ImageIcon, MessageCircle, Music, VideoIcon } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
