@@ -1,5 +1,12 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Code, ImageIcon, MessageCircle, Music, VideoIcon } from "lucide-react";
+
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+
 // Creating tools object (for various functionalities of the "Genie")
 const tools = [
     {
@@ -39,15 +46,9 @@ const tools = [
     },
 ]
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, ImageIcon, MessageCircle, Music, VideoIcon } from "lucide-react";
-
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-
-
-
 const DashboardPage = () => {
+    // Must be next/navigation
+    const router = useRouter();
     return (
         // Dashboard page JSX
         <div>
@@ -64,6 +65,7 @@ const DashboardPage = () => {
                 {tools.map((tool) => (
                     // shadcn card component
                     <Card
+                        onClick={() => router.push(tool.href)}
                         key={tool.href}
                         className="p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer"
                     >
