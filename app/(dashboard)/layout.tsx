@@ -6,7 +6,7 @@ import Sidebar from "@/components/sidebar"
 // TODO: Figure out issue with page rendering
 
 const DashboardLayout = ({
-    // Setting up children so we can load (routes)/dashboard/page.tsx inside this page
+    // Setting up children so we can load (routes)/dashboard/page.tsx inside this page (and subsequent pages)
     children
 }: {
     children: React.ReactNode;
@@ -21,7 +21,9 @@ const DashboardLayout = ({
             </div>
             {/* Render Navbar component instead of Sidebar component for devices with smaller screens */}
             <main className="md:pl-72">
+                {/* Rendering navbar to page */}
                 <Navbar />
+                 {/* Rendering individual page's content */}
                 {children}
             </main>
         </div>
