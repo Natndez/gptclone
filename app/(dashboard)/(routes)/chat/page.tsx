@@ -86,6 +86,9 @@ const ChatPage = () => {
                         </form>
                     </Form>
                 </div>
+                <div className="space-y-4 mt-4">
+                    Messages content (Rendering messages here)
+                </div>
             </div>
         </div>
     );
