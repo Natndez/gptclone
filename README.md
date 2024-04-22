@@ -21,3 +21,6 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 - Reinstall Modules:
     - rm -rf node_modules
     - npm install
+
+## OpenAI API Docs:
+- https://platform.openai.com/docs/api-reference/chat/create#chat-create-model 

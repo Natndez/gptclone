@@ -1,5 +1,7 @@
 "use client";
 
+import axios from "axios";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessageCircle } from "lucide-react";
@@ -32,6 +34,13 @@ const ChatPage = () => {
     // Submit function (will eventually submit to API here)
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
+        // try{
+
+        // } catch (error: any){
+        //     console.log(error);
+        // } finally {
+            
+        // }
     }
 
     return (
