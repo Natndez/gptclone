@@ -24,3 +24,6 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 
 ## OpenAI API Docs:
 - https://platform.openai.com/docs/api-reference/chat/create#chat-create-model 
+
+## OpenAI Usage:
+- https://platform.openai.com/usage
