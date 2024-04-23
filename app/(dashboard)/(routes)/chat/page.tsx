@@ -62,6 +62,8 @@ const ChatPage = () => {
             // API call
             const response = await axios.post("/api/chat", {
                 messages: newMessages,
+            }, {
+                timeout: 4000,
             });
 
             // Updating setMessages
@@ -71,7 +73,7 @@ const ChatPage = () => {
             form.reset()
         } catch (error: any){
             //TODO: OPEN PRO MODAL
-            console.log(error);
+            console.log("HERE IS THE ERRORRRRRR:", error);
         } finally {
             router.refresh();
         }
@@ -130,7 +132,13 @@ const ChatPage = () => {
                     </Form>
                 </div>
                 <div className="space-y-4 mt-4">
-                    Messages content (Rendering messages here)
+                    <div className="flex flex-col-reverse gap-y-4">
+                        {messages.map((message) => (
+                            <div key={message.content}>
+                                {message.content}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
