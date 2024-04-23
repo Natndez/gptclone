@@ -6,6 +6,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessageCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import { Heading } from "@/components/heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -13,12 +14,28 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { formSchema } from "./constants";
+import { useState } from "react";
 
 
+
+// ChatCompletionMessage Interface
+interface ChatCompletionMessage {
+    role: string;
+    content: string;
+}
 
 
 const ChatPage = () => {
     // Creating some functions for our form
+    const router = useRouter();
+
+    // ChatCompletionRequestMessage is deprecated, creating our own interface above
+    // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+    
+    // Using self-made interface for component
+    const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
+
+
     // Adding <z.infer<typeof formSchema>> before parenthesis to enforce particular types
     const form = useForm<z.infer<typeof formSchema>>({
         // Resolver to resolve conflicts with schema
@@ -34,13 +51,30 @@ const ChatPage = () => {
     // Submit function (will eventually submit to API here)
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
-        // try{
+        try{
+            const userMessage: ChatCompletionMessage = {
+                role: "user",
+                content: values.prompt,
+            };
+            // Adding messages to chat
+            const newMessages = [...messages, userMessage];
 
-        // } catch (error: any){
-        //     console.log(error);
-        // } finally {
-            
-        // }
+            // API call
+            const response = await axios.post("/api/chat", {
+                messages: newMessages,
+            });
+
+            // Updating setMessages
+            setMessages((current) => [...current, userMessage, response.data]);
+
+            // Clearing input
+            form.reset()
+        } catch (error: any){
+            //TODO: OPEN PRO MODAL
+            console.log(error);
+        } finally {
+            router.refresh();
+        }
     }
 
     return (
