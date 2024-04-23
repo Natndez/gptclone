@@ -24,7 +24,6 @@ interface ChatCompletionMessage {
     content: string;
 }
 
-
 const ChatPage = () => {
     // Creating some functions for our form
     const router = useRouter();
@@ -72,7 +71,7 @@ const ChatPage = () => {
             // Clearing input
             form.reset()
         } catch (error: any){
-            //TODO: OPEN PRO MODAL
+            // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
             console.log("HERE IS THE ERRORRRRRR:", error);
         } finally {
             router.refresh();
