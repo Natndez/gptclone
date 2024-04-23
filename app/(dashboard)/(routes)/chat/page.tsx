@@ -12,6 +12,7 @@ import { Heading } from "@/components/heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Empty } from "@/components/empty";
 
 import { formSchema } from "./constants";
 import { useState } from "react";
@@ -133,9 +134,7 @@ const ChatPage = () => {
                 <div className="space-y-4 mt-4">
                     {/* Setting up conditional for what renders */}
                     {messages.length === 0 && !isLoading && (
-                        <div>
-                            No messages!
-                        </div>
+                        <Empty />
                     )}
                     <div className="flex flex-col-reverse gap-y-4">
                         {messages.map((message) => (
