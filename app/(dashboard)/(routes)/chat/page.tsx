@@ -131,6 +131,12 @@ const ChatPage = () => {
                     </Form>
                 </div>
                 <div className="space-y-4 mt-4">
+                    {/* Setting up conditional for what renders */}
+                    {messages.length === 0 && !isLoading && (
+                        <div>
+                            No messages!
+                        </div>
+                    )}
                     <div className="flex flex-col-reverse gap-y-4">
                         {messages.map((message) => (
                             <div key={message.content}>
