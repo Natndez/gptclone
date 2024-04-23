@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 import axios from "axios";
 
@@ -15,7 +16,6 @@ import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
 
 import { formSchema } from "./constants";
-import { useState } from "react";
 
 
 
@@ -32,7 +32,7 @@ const ChatPage = () => {
     // ChatCompletionRequestMessage is deprecated, creating our own interface above
     // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
     
-    // Using self-made interface for component
+    // Using self-made interface for messages component
     const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
 
 
@@ -48,10 +48,11 @@ const ChatPage = () => {
     // To check loading status
     const isLoading = form.formState.isSubmitting;
 
-    // Submit function (will eventually submit to API here)
+    // Submit function (submits to API here)
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
+            // Creating userMessage
             const userMessage: ChatCompletionMessage = {
                 role: "user",
                 content: values.prompt,
@@ -69,11 +70,14 @@ const ChatPage = () => {
             // Updating setMessages
             setMessages((current) => [...current, userMessage, response.data]);
 
+            // log response status for debugging
+            console.log("Reponse from api: ", response.status);
+
             // Clearing input
             form.reset()
         } catch (error: any){
             // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
-            console.log("HERE IS THE ERRORRRRRR:", error);
+            console.log("HERE IS THE ERROR ----->", error);
         } finally {
             router.refresh();
         }
@@ -133,9 +137,7 @@ const ChatPage = () => {
                 </div>
                 <div className="space-y-4 mt-4">
                     {/* Setting up conditional for what renders */}
-                    {messages.length === 0 && !isLoading && (
-                        <Empty />
-                    )}
+                    {messages.length === 0 && !isLoading && ( <Empty /> )}
                     <div className="flex flex-col-reverse gap-y-4">
                         {messages.map((message) => (
                             <div key={message.content}>
