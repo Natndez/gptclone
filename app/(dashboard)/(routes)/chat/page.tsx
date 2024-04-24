@@ -139,7 +139,7 @@ const ChatPage = () => {
                 <div className="space-y-4 mt-4">
                     {/* Setting up conditional for what renders */}
                     {/* Use true instead of isLoading to verify functionality */}
-                    {true && (
+                    {isLoading && (
                         <div className="p-8 rounded-lg w-full lfex items-center justify-center bg-muted">
                             <Loader />
                         </div>

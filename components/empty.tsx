@@ -11,7 +11,7 @@ export const Empty = ({
 }: EmptyProps) => {
     return (
         <div className="h-full p-20 flex flex-col items-center justify-center">
-            <div className="relative h-72 w-72">
+            <div className="relative h-64 w-64">
                 <Image 
                     alt="Empty"
                     fill
