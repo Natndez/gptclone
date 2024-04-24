@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
+import { UserAvatar } from "@/components/user-avatar";
 
 import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
@@ -152,7 +153,7 @@ const ChatPage = () => {
                                 className={cn("p-8 w-full flex items-start gap-x-8 rounded-lg",
                                     message.role === "user" ? "bg-white border border-black/10" : "bg-zinc-200 border border-black/10"
                                 )}
-                            >
+                            >   
                                     {message.content}
                             </div>
                         ))}
