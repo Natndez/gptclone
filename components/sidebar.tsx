@@ -71,9 +71,10 @@ const Sidebar = () => {
                 <Link href="/dashboard" className="flex items-center pl-3 mb-14">
                     <div className="relative w-8 h-8 mr-4">
                         <Image
+                            // TODO: Come up with better logo to color balance
                             fill
                             alt="logo"
-                            src="/logo.png"
+                            src="/lampLogo2.png"
                         />
                     </div>
                     {/* Using 'cn' to use our montserrat font... use the following convention to do so while still using shadcn classes */}

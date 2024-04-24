@@ -15,10 +15,10 @@ export const Empty = ({
                 <Image 
                     alt="Empty"
                     fill
-                    src="/lamp.png"
+                    src="/lampLogo2.png"
                 />
             </div>
-            <p className="text-muted-foreground text-sm text-center">
+            <p className="text-muted-foreground text-md text-center">
                 {label}
             </p>
         </div>
