@@ -14,6 +14,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
+import { Loader } from "@/components/loader";
 
 import { formSchema } from "./constants";
 
@@ -137,6 +138,12 @@ const ChatPage = () => {
                 </div>
                 <div className="space-y-4 mt-4">
                     {/* Setting up conditional for what renders */}
+                    {/* Use true instead of isLoading to verify functionality */}
+                    {true && (
+                        <div className="p-8 rounded-lg w-full lfex items-center justify-center bg-muted">
+                            <Loader />
+                        </div>
+                    )}
                     {messages.length === 0 && !isLoading && ( <Empty label="Make your first wish - Unleash the Genie" /> )}
                     <div className="flex flex-col-reverse gap-y-4">
                         {messages.map((message) => (
