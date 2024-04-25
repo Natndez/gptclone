@@ -1,5 +1,5 @@
 ### Project Information
-This is an application intented to be a clone of ChatGPT. It is the first of many SaaS projects that I would like to complete!
+This is an application intented to be a clone of ChatGPT with an interface I prefer. It is the first of many SaaS projects that I would like to complete!
 
 ### Technologies:
 - Next.js
