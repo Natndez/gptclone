@@ -19,6 +19,7 @@ import { UserAvatar } from "@/components/user-avatar";
 
 import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
+import { BotAvatar } from "@/components/bot-avatar";
 
 
 
@@ -154,7 +155,12 @@ const ChatPage = () => {
                                     message.role === "user" ? "bg-white border border-black/10" : "bg-zinc-200 border border-black/10"
                                 )}
                             >   
+                                    {/* Display Avatar based on role */}
+                                    {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
+                                    <p className="text-sm">
                                     {message.content}
+                                    </p>
+                                    
                             </div>
                         ))}
                     </div>
