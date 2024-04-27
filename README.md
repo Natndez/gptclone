@@ -10,7 +10,7 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - ...
 
 ## Time Stamp:
-- 2:06:05
+- 2:08:49
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 

@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
+import { Typewriter } from "@/components/functional/typewriter"
 
 import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
@@ -158,7 +159,8 @@ const ChatPage = () => {
                                     {/* Display Avatar based on role */}
                                     {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
                                     <p className="text-sm">
-                                    {message.content}
+                                    {/* Use typing effect only for bot messages */}
+                                        {message.role === "user" ? message.content : <Typewriter text={message.content} speed={15}/> }
                                     </p>
                                     
                             </div>
