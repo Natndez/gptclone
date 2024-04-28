@@ -1,13 +1,13 @@
 "use client";
-import { useState } from "react";
 
 import axios from "axios";
-
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Code } from "lucide-react";
+import { Code, Divide } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 import { Heading } from "@/components/heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -158,10 +158,22 @@ const CodePage = () => {
                             >   
                                     {/* Display Avatar based on role */}
                                     {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
-                                    <p className="text-sm">
-                                    {/* Use typing effect only for bot messages */}
-                                        {message.role === "user" ? message.content : <Typewriter text={message.content} speed={15}/> }
-                                    </p>
+                                    {/* Using ReactMarkdown to properly display markdown code provided by Genie */}
+                                    <ReactMarkdown 
+                                        components={{
+                                            pre: ({ node, ...props }) => (
+                                                <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                                                    <pre {...props} />
+                                                </div>
+                                            ),
+                                            code: ({ node, ...props }) => (
+                                                <code className="bg-black/10 rounded-lg p-1" {...props}/>
+                                            )
+                                        }}
+                                        className="text-sm overflow-hidden leading-7"
+                                    >
+                                       {message.content || ""}
+                                    </ReactMarkdown>
                                     
                             </div>
                         ))}
