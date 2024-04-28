@@ -5,7 +5,7 @@ import axios from "axios";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageCircle } from "lucide-react";
+import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -30,7 +30,7 @@ interface ChatCompletionMessage {
     content: string;
 }
 
-const ChatPage = () => {
+const CodePage = () => {
     // Creating some functions for our form
     const router = useRouter();
 
@@ -66,7 +66,7 @@ const ChatPage = () => {
             const newMessages = [...messages, userMessage];
 
             // API call
-            const response = await axios.post("/api/chat", {
+            const response = await axios.post("/api/code", {
                 messages: newMessages,
             }, {
                 timeout: 4000,
@@ -92,11 +92,11 @@ const ChatPage = () => {
         <div>
             {/* Assigning Props to conform to our HeadingProps interface */}
             <Heading
-                title="Chat"
-                description="Ask Genie anything"
-                icon={MessageCircle}
-                iconColor="text-violet-500"
-                bgColor="bg-violet-500/10" 
+                title="Code Generation"
+                description="Genie can create programs based on descriptive text."
+                icon={Code}
+                iconColor="text-red-400"
+                bgColor="bg-red-400/10" 
             />
             <div className="px-4 lg:px-8">
                 <div>
@@ -126,7 +126,7 @@ const ChatPage = () => {
                                             <Input 
                                                 className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                                 disabled={isLoading}
-                                                placeholder="I wish..."
+                                                placeholder="I wish for a simple toggle button using react hooks"
                                                 // Handles onChange 
                                                 {...field}
                                             />
@@ -172,4 +172,4 @@ const ChatPage = () => {
     );
 }
 
-export default ChatPage;
+export default CodePage;
