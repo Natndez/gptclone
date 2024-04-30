@@ -1,13 +1,13 @@
 "use client";
+import { useState } from "react";
 
 import axios from "axios";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Code, Divide } from "lucide-react";
+import { ImageIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
 
 import { Heading } from "@/components/heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -30,7 +30,7 @@ interface ChatCompletionMessage {
     content: string;
 }
 
-const CodePage = () => {
+const ImagePage = () => {
     // Creating some functions for our form
     const router = useRouter();
 
@@ -66,7 +66,7 @@ const CodePage = () => {
             const newMessages = [...messages, userMessage];
 
             // API call
-            const response = await axios.post("/api/code", {
+            const response = await axios.post("/api/chat", {
                 messages: newMessages,
             }, {
                 timeout: 4000,
@@ -92,11 +92,11 @@ const CodePage = () => {
         <div>
             {/* Assigning Props to conform to our HeadingProps interface */}
             <Heading
-                title="Code Generation"
-                description="Genie can grant coding wishes. Summon solutions based on descriptive text."
-                icon={Code}
-                iconColor="text-red-400"
-                bgColor="bg-red-400/10" 
+                title="Image Creation"
+                description="Unleash your imagination - Here wishes meet creations"
+                icon={ImageIcon}
+                iconColor="text-sky-600"
+                bgColor="bg-sky-500/10" 
             />
             <div className="px-4 lg:px-8">
                 <div>
@@ -126,7 +126,7 @@ const CodePage = () => {
                                             <Input 
                                                 className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                                 disabled={isLoading}
-                                                placeholder="I wish for a simple toggle button using react hooks"
+                                                placeholder="I wish to see..."
                                                 // Handles onChange 
                                                 {...field}
                                             />
@@ -158,22 +158,10 @@ const CodePage = () => {
                             >   
                                     {/* Display Avatar based on role */}
                                     {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
-                                    {/* Using ReactMarkdown to properly display markdown code provided by Genie */}
-                                    <ReactMarkdown 
-                                        components={{
-                                            pre: ({ node, ...props }) => (
-                                                <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
-                                                    <pre {...props} />
-                                                </div>
-                                            ),
-                                            code: ({ node, ...props }) => (
-                                                <code className="bg-black/10 rounded-lg p-1" {...props}/>
-                                            )
-                                        }}
-                                        className="text-sm overflow-hidden leading-7"
-                                    >
-                                       {message.content || ""}
-                                    </ReactMarkdown>
+                                    <p className="text-sm">
+                                    {/* Use typing effect only for bot messages */}
+                                        {message.role === "user" ? message.content : <Typewriter text={message.content} speed={15}/> }
+                                    </p>
                                     
                             </div>
                         ))}
@@ -184,4 +172,4 @@ const CodePage = () => {
     );
 }
 
-export default CodePage;
+export default ImagePage;
