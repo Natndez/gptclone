@@ -1,4 +1,6 @@
 "use client";
+
+// Imports
 import { useState } from "react";
 
 import axios from "axios";
@@ -24,22 +26,10 @@ import { BotAvatar } from "@/components/bot-avatar";
 
 
 
-// ChatCompletionMessage Interface
-interface ChatCompletionMessage {
-    role: string;
-    content: string;
-}
-
 const ImagePage = () => {
     // Creating some functions for our form
     const router = useRouter();
-
-    // ChatCompletionRequestMessage is deprecated, creating our own interface above
-    // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
-    
-    // Using self-made interface for messages component
-    const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
-
+    const [images, setImages] = useState<string[]>([]);
 
     // Adding <z.infer<typeof formSchema>> before parenthesis to enforce particular types
     const form = useForm<z.infer<typeof formSchema>>({
@@ -57,23 +47,8 @@ const ImagePage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
-            // Creating userMessage
-            const userMessage: ChatCompletionMessage = {
-                role: "user",
-                content: values.prompt,
-            };
-            // Adding messages to chat
-            const newMessages = [...messages, userMessage];
-
             // API call
-            const response = await axios.post("/api/chat", {
-                messages: newMessages,
-            }, {
-                timeout: 4000,
-            });
-
-            // Updating setMessages
-            setMessages((current) => [...current, userMessage, response.data]);
+            const response = await axios.post("/api/chat");
 
             // log response status for debugging
             console.log("Reponse from api: ", response.status);
@@ -147,24 +122,10 @@ const ImagePage = () => {
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && ( <Empty label="Make your first wish - Unleash the Genie" /> )}
-                    <div className="flex flex-col-reverse gap-y-4">
-                        {messages.map((message) => (
-                            <div 
-                                key={message.content}
-                                className={cn("p-8 w-full flex items-start gap-x-8 rounded-lg",
-                                    message.role === "user" ? "bg-white border border-black/10" : "bg-zinc-200 border border-black/10"
-                                )}
-                            >   
-                                    {/* Display Avatar based on role */}
-                                    {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
-                                    <p className="text-sm">
-                                    {/* Use typing effect only for bot messages */}
-                                        {message.role === "user" ? message.content : <Typewriter text={message.content} speed={15}/> }
-                                    </p>
-                                    
-                            </div>
-                        ))}
+                    {images.length === 0 && !isLoading && ( <Empty label="Make your first image wish - Unleash the Genie's creativity" /> 
+                    )}
+                    <div>
+                        Images will be rendered here :)
                     </div>
                 </div>
             </div>
