@@ -118,7 +118,7 @@ const ImagePage = () => {
                 <div className="space-y-4 mt-4">
                     {/* Setting up conditional for what renders */}
                     {isLoading && ( // Use true instead of isLoading to verify functionality 
-                        <div className="p-8 rounded-lg w-full lfex items-center justify-center bg-muted">
+                        <div className="p-20">
                             <Loader />
                         </div>
                     )}
