@@ -19,8 +19,9 @@ import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
 import { Typewriter } from "@/components/functional/typewriter"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-import { formSchema } from "./constants";
+import { amountOptions, formSchema, resolutionOptions } from "./constants";
 import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
 
@@ -35,8 +36,11 @@ const ImagePage = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         // Resolver to resolve conflicts with schema
         resolver: zodResolver(formSchema),
+        // Default values in our useForm hook
         defaultValues: {
-            prompt: ""
+            prompt: "",
+            amount: "1",
+            resolution: "512x512"
         }
     });
 
@@ -47,8 +51,17 @@ const ImagePage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
-            // API call
-            const response = await axios.post("/api/chat");
+            setImages([]); // Resets photos everytime submit is clicked
+
+
+            // API response
+            const response = await axios.post("/api/image", values); // (can pass values without adjusting, modifying server-side)
+
+            // Getting Image urls from response and storing in an array
+            const urls = response.data.map((image: { url: string }) => image.url);
+
+            // Passing urls to setImages urls is an array so no need to include '[]'
+            setImages(urls)
 
             // log response status for debugging
             console.log("Reponse from api: ", response.status);
@@ -92,11 +105,12 @@ const ImagePage = () => {
                             gap-2
                             "
                         >
+                            {/* Prompt Field */}
                             <FormField 
                                 // Controls our prompt
                                 name="prompt"
                                 render={({ field }) => (
-                                    <FormItem className="col-span-12 lg:col-span-10">
+                                    <FormItem className="col-span-12 lg:col-span-6">
                                         <FormControl className="m-0 p-0">
                                             <Input 
                                                 className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
@@ -106,6 +120,68 @@ const ImagePage = () => {
                                                 {...field}
                                             />
                                         </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            {/* Amount of images field */}
+                            <FormField
+                                control={form.control}
+                                name="amount"
+                                render={({ field }) => (
+                                    <FormItem className="col-span-12 lg:col-span-2">
+                                        <Select
+                                            disabled={isLoading}
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue defaultValue={field.value}/>
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {amountOptions.map((option) => (
+                                                    <SelectItem
+                                                        key={option.value}
+                                                        value={option.value}
+                                                    >
+                                                        {option.label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </FormItem>
+                                )}
+                            />
+                            {/* Resolution of images field */}
+                            <FormField
+                                control={form.control}
+                                name="resolution"
+                                render={({ field }) => (
+                                    <FormItem className="col-span-12 lg:col-span-2">
+                                        <Select
+                                            disabled={isLoading}
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            defaultValue={field.value}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue defaultValue={field.value}/>
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                {resolutionOptions.map((option) => (
+                                                    <SelectItem
+                                                        key={option.value}
+                                                        value={option.value}
+                                                    >
+                                                        {option.label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
                                     </FormItem>
                                 )}
                             />
