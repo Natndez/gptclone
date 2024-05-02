@@ -4,7 +4,7 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 ### Technologies:
 - Next.js
 - Clerk
-- React
+- TypeScript
 - Tailwind
 - Stripe
 - ...
