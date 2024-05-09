@@ -41,7 +41,7 @@ export async function POST(
         }
         
         const imageResponse = await openai.images.generate({
-            model: "dall-e-3",  // USING dall-e-3 for now can also use dall-e-2
+           // model: "dall-e-3",  Defaults to dall-e-2 (if wanting to use dall-e-3 only n=1 is supported)
             prompt: prompt,
             n: parseInt(amount, 10),
             size: resolution,
