@@ -27,7 +27,7 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 
-
+// TODO: FIND A WAY TO USE DALL-E-3 AS WELL
 
 const ImagePage = () => {
     // Creating some functions for our form
@@ -216,7 +216,7 @@ const ImagePage = () => {
                                     />
                                 </div>
                                 <CardFooter className="p-2">
-                                        <Button onClick={() => window.open(src)} variant="default" className="w-full">
+                                        <Button onClick={() => window.open(src)} variant="outline" className="w-full">
                                             <Download className="h-4 w-4 mr-2"/>
                                             Download
                                         </Button>
