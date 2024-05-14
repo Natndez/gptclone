@@ -9,6 +9,11 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - Stripe
 - ...
 
+### APIs for tools:
+- OpenAI for Text, Code, and Image
+- Waiting on OpenAI for video (Feature Release Date TBD)
+- Conidering Different APIs for Audio and Video
+
 ## Time Stamp:
 - 2:43:00
 - Clerk issue resolved... loading times need improvement
