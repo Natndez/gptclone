@@ -15,7 +15,7 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - Conidering Different APIs for Audio and Video
 
 ## Time Stamp:
-- 2:43:00
+- 2:44:30
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 

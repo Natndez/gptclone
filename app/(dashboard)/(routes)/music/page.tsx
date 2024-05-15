@@ -5,7 +5,7 @@ import axios from "axios";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageCircle, Music } from "lucide-react";
+import { Music } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -126,7 +126,7 @@ const ChatPage = () => {
                                             <Input 
                                                 className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                                 disabled={isLoading}
-                                                placeholder="I wish..."
+                                                placeholder="I wish to hear a piano solo"
                                                 // Handles onChange 
                                                 {...field}
                                             />
@@ -147,24 +147,9 @@ const ChatPage = () => {
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && ( <Empty label="Make your first wish - Unleash the Genie" /> )}
-                    <div className="flex flex-col-reverse gap-y-4">
-                        {messages.map((message) => (
-                            <div 
-                                key={message.content}
-                                className={cn("p-8 w-full flex items-start gap-x-8 rounded-lg",
-                                    message.role === "user" ? "bg-white border border-black/10" : "bg-zinc-200 border border-black/10"
-                                )}
-                            >   
-                                    {/* Display Avatar based on role */}
-                                    {message.role === "user" ? <UserAvatar/> : <BotAvatar /> }
-                                    <p className="text-sm">
-                                    {/* Use typing effect only for bot messages */}
-                                        {message.role === "user" ? message.content : <Typewriter text={message.content} speed={15}/> }
-                                    </p>
-                                    
-                            </div>
-                        ))}
+                    {messages.length === 0 && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
+                    <div>
+                        Music will be generated here:
                     </div>
                 </div>
             </div>
