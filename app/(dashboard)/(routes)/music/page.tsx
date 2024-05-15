@@ -5,7 +5,7 @@ import axios from "axios";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Music } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -94,9 +94,9 @@ const ChatPage = () => {
             <Heading
                 title="Music Creation"
                 description="Ask Genie to create you a tune"
-                icon={MessageCircle}
-                iconColor="text-violet-500"
-                bgColor="bg-violet-500/10" 
+                icon={Music}
+                iconColor="text-emerald-400"
+                bgColor="bg-emerald-400/10" 
             />
             <div className="px-4 lg:px-8">
                 <div>
