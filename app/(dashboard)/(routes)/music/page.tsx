@@ -19,26 +19,14 @@ import { UserAvatar } from "@/components/user-avatar";
 import { Typewriter } from "@/components/functional/typewriter"
 
 import { formSchema } from "./constants";
-import { cn } from "@/lib/utils";
-import { BotAvatar } from "@/components/bot-avatar";
 
 
-
-// ChatCompletionMessage Interface
-interface ChatCompletionMessage {
-    role: string;
-    content: string;
-}
-
-const ChatPage = () => {
-    // Creating some functions for our form
+const MusicPage = () => {
+    // Creating router
     const router = useRouter();
+    // Music state
+    const [music, setMusic] = useState<string>() // Using string instead of array
 
-    // ChatCompletionRequestMessage is deprecated, creating our own interface above
-    // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
-    
-    // Using self-made interface for messages component
-    const [messages, setMessages] = useState<ChatCompletionMessage[]>([]);
 
 
     // Adding <z.infer<typeof formSchema>> before parenthesis to enforce particular types
@@ -57,26 +45,12 @@ const ChatPage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
-            // Creating userMessage
-            const userMessage: ChatCompletionMessage = {
-                role: "user",
-                content: values.prompt,
-            };
-            // Adding messages to chat
-            const newMessages = [...messages, userMessage];
+            setMusic(undefined);
 
             // API call
-            const response = await axios.post("/api/chat", {
-                messages: newMessages,
-            }, {
-                timeout: 4000,
-            });
+            const response = await axios.post("/api/music", values);
 
-            // Updating setMessages
-            setMessages((current) => [...current, userMessage, response.data]);
-
-            // log response status for debugging
-            console.log("Reponse from api: ", response.status);
+            setMusic(response.data.audio);
 
             // Clearing input
             form.reset()
@@ -147,7 +121,7 @@ const ChatPage = () => {
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
+                    {!music && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
                     <div>
                         Music will be generated here:
                     </div>
@@ -157,4 +131,4 @@ const ChatPage = () => {
     );
 }
 
-export default ChatPage;
+export default MusicPage;
