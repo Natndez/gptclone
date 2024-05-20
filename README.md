@@ -11,11 +11,11 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 
 ### APIs for tools:
 - OpenAI for Text, Code, and Image
+- Replicate AI for music(Riffusion) and video(TBD)
 - Waiting on OpenAI for video (Feature Release Date TBD)
-- Conidering Different APIs for Audio and Video
 
 ## Time Stamp:
-- 2:46:40
+- 2:54:27
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 
@@ -32,6 +32,9 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 
 ## OpenAI Usage:
 - https://platform.openai.com/usage
+
+## Replicate API Docs:
+- https://replicate.com/docs 
 
 ## Tailwind Docs:
 - https://tailwindcss.com/docs/installation 

@@ -122,9 +122,11 @@ const MusicPage = () => {
                         </div>
                     )}
                     {!music && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
-                    <div>
-                        Music will be generated here:
-                    </div>
+                    {music && (
+                        <audio controls className="w-full mt-8">
+                            <source src={music}/>
+                        </audio>
+                    )}
                 </div>
             </div>
         </div>
