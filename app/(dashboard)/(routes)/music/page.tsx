@@ -123,6 +123,7 @@ const MusicPage = () => {
                     )}
                     {!music && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
                     {music && (
+                        // LOOKS FAR BETTER ON CHROME THAN OTHER BROWSERS (TRY TO RECONCILE)
                         <audio controls className="w-full mt-8">
                             <source src={music}/>
                         </audio>
