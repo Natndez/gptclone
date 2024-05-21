@@ -15,7 +15,7 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - Waiting on OpenAI for video (Feature Release Date TBD)
 
 ## Time Stamp:
-- 2:56:17
+- 3:00:37
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 

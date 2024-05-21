@@ -39,7 +39,7 @@ export async function POST(
         return NextResponse.json(response);
         // Catching any other errors
     } catch (error) {
-        console.log("[MUSIC_ERROR]", error);
+        console.log("[VIDEO_ERROR]", error);
         return new NextResponse("Internal error", { status: 500})
     }
 }

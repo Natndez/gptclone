@@ -5,7 +5,7 @@ import axios from "axios";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Music, Video } from "lucide-react";
+import { Video } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -15,8 +15,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
-import { UserAvatar } from "@/components/user-avatar";
-import { Typewriter } from "@/components/functional/typewriter"
 
 import { formSchema } from "./constants";
 
@@ -25,7 +23,7 @@ const VideoPage = () => {
     // Creating router
     const router = useRouter();
     // Music state
-    const [music, setMusic] = useState<string>() // Using string instead of array
+    const [video, setVideo] = useState<string>() // Using string instead of array
 
 
 
@@ -45,12 +43,12 @@ const VideoPage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
-            setMusic(undefined);
+            setVideo(undefined);
 
             // API call
             const response = await axios.post("/api/video", values);
 
-            setMusic(response.data.audio);
+            setVideo(response.data.audio);
 
             // Clearing input
             form.reset()
@@ -121,12 +119,12 @@ const VideoPage = () => {
                             <Loader />
                         </div>
                     )}
-                    {!music && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
-                    {music && (
+                    {!video && !isLoading && ( <Empty label="Make your first wish - Unleash Genie's talent" /> )}
+                    {video && (
                         // LOOKS FAR BETTER ON CHROME THAN OTHER BROWSERS (TRY TO RECONCILE)
-                        <audio controls className="w-full mt-8">
-                            <source src={music}/>
-                        </audio>
+                        <video className="w-full aspect-video mt-8 rounded-lg border bg-black" controls>
+                            <source src={video}/>
+                        </video>
                     )}
                 </div>
             </div>

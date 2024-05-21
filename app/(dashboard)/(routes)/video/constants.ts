@@ -5,6 +5,6 @@ import * as z from "zod";
 export const formSchema = z.object({
     // Must have following properties when used on pages
     prompt: z.string().min(1, {
-        message: "Music prompt is required",
+        message: "Video prompt is required",
     }),
 });
