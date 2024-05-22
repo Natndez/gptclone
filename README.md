@@ -11,7 +11,7 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 
 ### APIs for tools:
 - OpenAI for Text, Code, and Image
-- Replicate AI for music(Riffusion) and video(TBD)
+- Replicate AI for music(Riffusion) and video(Zeroscope-v2)
 - Waiting on OpenAI for video (Feature Release Date TBD)
 
 ## Time Stamp:
