@@ -25,13 +25,23 @@ export async function POST(
             return new NextResponse("Prompt is required", { status: 400 });
         }
         
-        // Input for replicate AI
+        // ******All parameters for video gen******
+        // const input = {
+        //     fps: 24,
+        //     width: 1024,
+        //     height: 576,
+        //     prompt: "Clown fish swimming in a coral reef, beautiful, 8k, perfect, award winning, national geographic",
+        //     guidance_scale: 17.5,
+        //     negative_prompt: "very blue, dust, noisy, washed out, ugly, distorted, broken"
+        // };
+
+        // Our input to Zeroscope-v2
         const input = {
-            prompt_a: prompt
+            prompt: prompt
         };
 
         // Getting our response
-        const response = await replicate.run("riffusion/riffusion:8cf61ea6c56afd61d8f5b9ffd14d7c216c0a93844ce2d82ac1c9ecc9c7f24e05", { input });
+        const response = await replicate.run("anotherjesse/zeroscope-v2-xl:9f747673945c62801b13b84701c783929c0ee784e4748ec062204894dda1a351", { input });
         
         // Displaying response to 
         console.log(response)

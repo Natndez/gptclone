@@ -48,7 +48,8 @@ const VideoPage = () => {
             // API call
             const response = await axios.post("/api/video", values);
 
-            setVideo(response.data.audio);
+            // URI is first in the array
+            setVideo(response.data[0]);
 
             // Clearing input
             form.reset()
