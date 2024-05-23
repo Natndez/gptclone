@@ -14,6 +14,13 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - Replicate AI for music(Riffusion) and video(Zeroscope-v2)
 - Waiting on OpenAI for video (Feature Release Date TBD)
 
+### Database Information
+- Could use PlanetScale (Simplest solution but expensive)
+    - https://planetscale.com/ 
+- Also considering Supabase
+    - https://supabase.com/ 
+- Research more options if these two aren't realistic
+
 ## Time Stamp:
 - 3:02:45
 - Clerk issue resolved... loading times need improvement
