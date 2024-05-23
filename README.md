@@ -1,5 +1,5 @@
 ### Project Information
-This is an application intented to be a clone of ChatGPT with an interface I prefer. It is the first of many SaaS projects that I would like to complete!
+This is an application intended to be a clone of ChatGPT with an interface I prefer.
 
 ### Technologies:
 - Next.js
@@ -7,22 +7,22 @@ This is an application intented to be a clone of ChatGPT with an interface I pre
 - TypeScript
 - Tailwind
 - Stripe
-- ...
+- Prisma
 
 ### APIs for tools:
-- OpenAI for Text, Code, and Image
+- OpenAI API for Text, Code, and Image
 - Replicate AI for music(Riffusion) and video(Zeroscope-v2)
 - Waiting on OpenAI for video (Feature Release Date TBD)
 
 ### Database Information
+- Currently using Supabase
+    - https://supabase.com/ 
 - Could use PlanetScale (Simplest solution but expensive)
     - https://planetscale.com/ 
-- Also considering Supabase
-    - https://supabase.com/ 
 - Research more options if these two aren't realistic
 
 ## Time Stamp:
-- 3:02:45
+- 3:07:18
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 
