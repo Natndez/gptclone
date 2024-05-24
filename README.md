@@ -8,6 +8,7 @@ This is an application intended to be a clone of ChatGPT with an interface I pre
 - Tailwind
 - Stripe
 - Prisma
+- API's Listed below...
 
 ### APIs for tools:
 - OpenAI API for Text, Code, and Image
