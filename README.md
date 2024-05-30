@@ -18,6 +18,7 @@ This is an application intended to be a clone of ChatGPT with an interface I pre
 ### Database Information
 - Currently using Supabase (Linked with GitHub Account)
     - https://supabase.com/ 
+    - use `npx prisma db push` to update db
 - Could use PlanetScale  (Simplest solution but expensive, Antonio uses this, better to find my own option)
     - https://planetscale.com/ 
 - Research more options if these two aren't realistic
