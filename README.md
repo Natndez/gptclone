@@ -16,9 +16,9 @@ This is an application intended to be a clone of ChatGPT with an interface I pre
 - Waiting on OpenAI for video (Feature Release Date TBD)
 
 ### Database Information
-- Currently using Supabase
+- Currently using Supabase (Linked with GitHub Account)
     - https://supabase.com/ 
-- Could use PlanetScale (Simplest solution but expensive)
+- Could use PlanetScale  (Simplest solution but expensive, Antonio uses this, better to find my own option)
     - https://planetscale.com/ 
 - Research more options if these two aren't realistic
 
