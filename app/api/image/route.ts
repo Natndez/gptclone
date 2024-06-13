@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { OpenAI } from "openai";
 import Configuration from "openai";
 
+import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+
 
 // Configuraing openai with our api key (obtained from openai)
 const configuration = new Configuration({
@@ -39,6 +41,14 @@ export async function POST(
         if (!resolution) {
             return new NextResponse("Resolution is required", { status: 400 });
         }
+
+        // Checking if user is on a free trial
+        const freeTrial = await checkApiLimit();
+
+        // Return status 403 if no more free trial
+        if (!freeTrial) {
+            return new NextResponse("Free trial has expired.", { status: 403 });
+        }
         
         const imageResponse = await openai.images.generate({
            // model: "dall-e-3",  Defaults to dall-e-2 (if wanting to use dall-e-3 only n=1 is supported)
@@ -46,6 +56,9 @@ export async function POST(
             n: parseInt(amount, 10),
             size: resolution,
         });
+
+        // Increment Count
+        await increaseApiLimit();
 
         // Return response.choices[0].message to return the message from the model
         return NextResponse.json(imageResponse.data);
