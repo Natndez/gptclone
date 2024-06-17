@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import { Code, ImageIcon, LayoutDashboard, MessageCircle, Music, Settings, VideoIcon } from "lucide-react";
 
+import { FreeCounter } from "@/components/free-counter";
+
 // More imports
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -61,7 +63,14 @@ const routes = [
     },
 ];
 
-const Sidebar = () => {
+// Setting up interface for sidebar props
+interface SidebarProps {
+    apiLimitCount: number;
+};
+
+const Sidebar = ({
+    apiLimitCount = 0
+}: SidebarProps) => {
     // Using react/navigation's usePathname to store the current path
     const pathname = usePathname();
     return (
@@ -105,6 +114,9 @@ const Sidebar = () => {
                     ))}
                 </div>
             </div>
+        <FreeCounter 
+            apiLimitCount={apiLimitCount}
+        />
         </div>
     );
 }
