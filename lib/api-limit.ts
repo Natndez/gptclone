@@ -51,3 +51,14 @@ export const checkApiLimit = async () => {
         return false;
     }
 }
+
+export const getApiLimitCount = async () => {
+    
+    // Get users id from clerk auth
+    const { userId } = auth();
+
+    // Return 0 if there is no user logged in
+    if (!userId) {
+        return 0;
+    }
+}
