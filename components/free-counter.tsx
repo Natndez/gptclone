@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { MAX_FREE_COUNTS } from "@/constants";
+import { Progress } from "@/components/ui/progress";
 
 interface FreeCounterProps {
     apiLimitCount: number;
@@ -31,6 +32,10 @@ export const FreeCounter = ({
                         <p>
                             {apiLimitCount} / {MAX_FREE_COUNTS} Free generations
                         </p>
+                        <Progress 
+                            className="h-3"
+                            value={(apiLimitCount / MAX_FREE_COUNTS) * 100}
+                        />
                     </div>
                 </CardContent>
             </Card>
