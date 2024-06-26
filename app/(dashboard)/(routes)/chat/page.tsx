@@ -84,7 +84,7 @@ const ChatPage = () => {
             // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
             console.log("HERE IS THE ERROR ----->", error);
         } finally {
-            router.refresh();
+            router.refresh(); // Refreshing the router at the end ensures things get updated (e.g. free generations counter)
         }
     }
 
