@@ -12,7 +12,7 @@ interface useProModalStore {
 
 // Gives us global state controls for the pro modal
 export const useProModal = create<useProModalStore>((set) => ({
-    isOpen: false, // Not open by default
+    isOpen: true, // Not open by default
     onOpen: () => set({ isOpen: true }), // On open set isOpen to true (pretty self explanatory)
     onClose: () => set({ isOpen: false }), // The converse of onOpen
 }));
