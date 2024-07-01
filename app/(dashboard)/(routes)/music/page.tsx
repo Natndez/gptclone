@@ -19,9 +19,13 @@ import { UserAvatar } from "@/components/user-avatar";
 import { Typewriter } from "@/components/functional/typewriter"
 
 import { formSchema } from "./constants";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 
 const MusicPage = () => {
+    // Getting proModal
+    const proModal = useProModal();
+
     // Creating router
     const router = useRouter();
     // Music state
@@ -55,8 +59,12 @@ const MusicPage = () => {
             // Clearing input
             form.reset()
         } catch (error: any){
-            // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
-            console.log("HERE IS THE ERROR ----->", error);
+            if (error?.response?.status === 403) {
+                proModal.onOpen();
+            }
+            else {
+                console.log("Here is the error ------>", error);
+            }
         } finally {
             router.refresh();
         }

@@ -26,10 +26,14 @@ import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 // TODO: FIND A WAY TO USE DALL-E-3 AS WELL
 
 const ImagePage = () => {
+    // Getting proModal
+    const proModal = useProModal();
+
     // Creating some functions for our form
     const router = useRouter();
     const [images, setImages] = useState<string[]>([]);
@@ -71,8 +75,12 @@ const ImagePage = () => {
             // Clearing input
             form.reset()
         } catch (error: any){
-            // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
-            console.log("HERE IS THE ERROR ----->", error);
+            if (error?.response?.status === 403) {
+                proModal.onOpen();
+            }
+            else {
+                console.log("Here is the error ------>", error);
+            }
         } finally {
             router.refresh();
         }

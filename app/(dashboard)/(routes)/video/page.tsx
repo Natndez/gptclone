@@ -17,9 +17,13 @@ import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 
 import { formSchema } from "./constants";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 
 const VideoPage = () => {
+    // Pro modal
+    const proModal = useProModal();
+
     // Creating router
     const router = useRouter();
     // Music state
@@ -54,8 +58,12 @@ const VideoPage = () => {
             // Clearing input
             form.reset()
         } catch (error: any){
-            // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
-            console.log("HERE IS THE ERROR ----->", error);
+            if (error?.response?.status === 403) {
+                proModal.onOpen();
+            }
+            else {
+                console.log("Here is the error ------>", error);
+            }
         } finally {
             router.refresh();
         }
