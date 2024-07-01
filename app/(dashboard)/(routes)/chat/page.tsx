@@ -21,6 +21,7 @@ import { Typewriter } from "@/components/functional/typewriter"
 import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 
 
@@ -31,6 +32,9 @@ interface ChatCompletionMessage {
 }
 
 const ChatPage = () => {
+    // Getting our proModal
+    const proModal = useProModal();
+
     // Creating some functions for our form
     const router = useRouter();
 
@@ -81,8 +85,12 @@ const ChatPage = () => {
             // Clearing input
             form.reset()
         } catch (error: any){
-            // TODO: OPEN PRO MODAL TO UPGRADE ACCOUNT
-            console.log("HERE IS THE ERROR ----->", error);
+            if (error?.response?.status === 403) {
+                proModal.onOpen();
+            }
+            else {
+                console.log("Here is the error ------>", error);
+            }
         } finally {
             router.refresh(); // Refreshing the router at the end ensures things get updated (e.g. free generations counter)
         }
