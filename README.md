@@ -25,7 +25,7 @@ This is an application intended to be a clone of ChatGPT with an interface I pre
 - Research more options if these two aren't realistic
 
 ## Time Stamp:
-- 4:29:24
+- 4:32:08
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 
@@ -54,4 +54,4 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 - May have to update `STRIPE_WEBHOOK_SECRET` in `.env` everytime.
 - https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local
 - Command to run:
-    - `stripe listen --forward-to localhost:00/api/webhook`
+    - `stripe listen --forward-to localhost:3000/api/webhook`
