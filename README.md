@@ -48,3 +48,8 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 
 ## Tailwind Docs:
 - https://tailwindcss.com/docs/installation 
+
+## Stripe API:
+- Make sure to run the commands on the following page when testing stripe connection.
+- May have to update `STRIPE_WEBHOOK_SECRET` in `.env` everytime.
+- https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local  
