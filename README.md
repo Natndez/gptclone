@@ -52,4 +52,6 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 ## Stripe API:
 - Make sure to run the commands on the following page when testing stripe connection.
 - May have to update `STRIPE_WEBHOOK_SECRET` in `.env` everytime.
-- https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local  
+- https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local
+- Command to run:
+    - `stripe listen --forward-to localhost:00/api/webhook`
