@@ -9,6 +9,9 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+import axios from "axios";
+import { useState } from "react";
+
 // Creating tools object (for various functionalities of the "Genie")
 const tools = [
     {
@@ -46,6 +49,31 @@ const tools = [
 // Pro modal component
 export const ProModal = () => {
     const proModal = useProModal();
+    const [loading, setLoading] = useState(false);
+
+    // Arrow function to use when subscribing
+    const onSubscribe = async () => {
+        try {
+            setLoading(true); // set loading state to true
+            
+            // ONE OPTION
+            // const response = axios.get("/api/stripe"); // using get because our stripe API route uses GET
+            // window.location.href = (await response).data.url;
+            
+            // PREFERRED METHOD
+            // Using axios to get response (Will be a URL for both cases [SEE api/stripe/route.ts])
+            const response = await axios.get("/api/stripe");
+
+            // Tells browser to navigate to given URL (in this case our stripe url)
+            window.location.href = response.data.url;
+
+
+        } catch (error) {
+            console.log(error, "STRIPE_CLIENT_ERROR"); // Log error if theres an issue subscribing
+        } finally {
+            setLoading(false); // set loading state back to false
+        }
+    }
     
     return (
         <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -80,6 +108,7 @@ export const ProModal = () => {
                 </DialogHeader>
                 <DialogFooter>
                     <Button
+                        onClick={onSubscribe}
                         size="lg"
                         variant="premium"
                         className="w-full"
