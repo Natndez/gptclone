@@ -55,3 +55,7 @@ https://www.youtube.com/watch?v=ffJ38dBzrlY
 - https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local
 - Command to run:
     - `stripe listen --forward-to localhost:3000/api/webhook`
+- Stripe Test Credit Card
+    - 4242 4242 4242 4242 (NUM)
+    - 5/55 (EXP)
+    - 555  (CVV)
