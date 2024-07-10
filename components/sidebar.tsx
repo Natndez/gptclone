@@ -65,11 +65,13 @@ const routes = [
 
 // Setting up interface for sidebar props
 interface SidebarProps {
-    apiLimitCount: number;
+    apiLimitCount: number,
+    isPro: boolean,
 };
 
 const Sidebar = ({
-    apiLimitCount = 0
+    apiLimitCount = 0,
+    isPro = false,
 }: SidebarProps) => {
     // Using react/navigation's usePathname to store the current path
     const pathname = usePathname();
@@ -114,6 +116,7 @@ const Sidebar = ({
                 </div>
             </div>
         <FreeCounter 
+            isPro={isPro}
             apiLimitCount={apiLimitCount}
         />
         </div>

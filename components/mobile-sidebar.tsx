@@ -8,12 +8,14 @@ import Sidebar from "@/components/sidebar";
 import { useEffect, useState } from "react";
 
 interface MobileSidebarProps {
-    apiLimitCount: number;
+    apiLimitCount: number,
+    isPro: boolean,
 }
 
 // TODO: Fix color issues on sidebar (e.g. close button)
 const MobileSidebar = ({
-    apiLimitCount
+    apiLimitCount = 0,
+    isPro = false,
 }: MobileSidebarProps) => {
     
     // To handle Hydration Error associated with MobileSidebar (can be used to fix most components giving hydration errors)
@@ -37,7 +39,7 @@ const MobileSidebar = ({
             </SheetTrigger>
             {/* Conent within the sheet is our sidebar component */}
             <SheetContent side="left" className="p-0">
-                <Sidebar apiLimitCount={apiLimitCount}/>
+                <Sidebar isPro={isPro} apiLimitCount={apiLimitCount}/>
             </SheetContent>
         </Sheet>
     );
