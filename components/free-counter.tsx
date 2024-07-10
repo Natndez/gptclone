@@ -32,6 +32,7 @@ export const FreeCounter = ({
         return null;
     }
 
+    // Return null if the user is pro as they wouldnt have a counter
     if (isPro) {
         return null;
     }

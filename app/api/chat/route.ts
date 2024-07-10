@@ -4,6 +4,7 @@ import { OpenAI } from "openai";
 import Configuration from "openai";
 
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 
 // Configuraing openai with our api key (obtained from openai)
@@ -37,8 +38,11 @@ export async function POST(
         // Checking if user is on a free trial
         const freeTrial = await checkApiLimit();
 
+        // Check if pro
+        const isPro = await checkSubscription();
+
         // Return status 403 if no more free trial
-        if (!freeTrial) {
+        if (!freeTrial && !isPro) {
             return new NextResponse("Free trial has expired.", { status: 403 });
         }
 
@@ -48,8 +52,10 @@ export async function POST(
             messages
         });
 
-        // Increment count
-        await increaseApiLimit();
+        // Increment count if not a pro user
+        if (!isPro) {
+            await increaseApiLimit();
+        }
 
         // Return response.choices[0].message to return the message from the model
         return NextResponse.json(response.choices[0].message);
