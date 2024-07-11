@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import Replicate from "replicate";
 
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 // Configuring Replicate AI
 const replicate = new Replicate({
@@ -45,15 +46,19 @@ export async function POST(
         // Checking if user is on a free trial
         const freeTrial = await checkApiLimit();
 
+        const isPro = await checkSubscription();
+
         // Return status 403 if no more free trial
-        if (!freeTrial) {
+        if (!freeTrial && !isPro) {
             return new NextResponse("Free trial has expired.", { status: 403 });
         }
 
         // Getting our response
         const response = await replicate.run("anotherjesse/zeroscope-v2-xl:9f747673945c62801b13b84701c783929c0ee784e4748ec062204894dda1a351", { input });
         
-        await increaseApiLimit();
+        if (!isPro) {
+            await increaseApiLimit();
+        }
 
         // Displaying response to 
         console.log(response)

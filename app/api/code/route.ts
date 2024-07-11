@@ -4,6 +4,7 @@ import { OpenAI } from "openai";
 import Configuration from "openai";
 
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 
 // Making out own simple interface as OpenAI's ChatCompletionRequestMessage is deprecated
 interface ChatCompletionRequestMessage {
@@ -48,8 +49,11 @@ export async function POST(
          // Checking if user is on a free trial
          const freeTrial = await checkApiLimit();
 
+         // Check if user is a pro user
+         const isPro = await checkSubscription();
+
          // Return status 403 if no more free trial
-         if (!freeTrial) {
+         if (!freeTrial && !isPro) {
              return new NextResponse("Free trial has expired.", { status: 403 });
          }
 
@@ -60,7 +64,9 @@ export async function POST(
         });
         
         // Increment Count
-        await increaseApiLimit();
+        if (!isPro) {
+            await increaseApiLimit();
+        }
 
         // Return response.choices[0].message to return the message from the model
         return NextResponse.json(response.choices[0].message);
