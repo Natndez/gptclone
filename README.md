@@ -26,7 +26,7 @@ This is an application intended to be a clone of ChatGPT with an interface I pre
 - Run `npx prisma migrate reset` to clear entire database, then run above commands starting with generate
 
 ## Time Stamp:
-- 5:01:55
+- 5:01:50
 - Clerk issue resolved... loading times need improvement
 https://www.youtube.com/watch?v=ffJ38dBzrlY 
 
