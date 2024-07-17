@@ -22,6 +22,8 @@ import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
+import toast from "react-hot-toast";
+import { error } from "console";
 
 
 
@@ -61,6 +63,10 @@ const ChatPage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
+            // TO DEBUG TOASTER
+            // throw new Error("Something");
+
+
             // Creating userMessage
             const userMessage: ChatCompletionMessage = {
                 role: "user",
@@ -89,7 +95,7 @@ const ChatPage = () => {
                 proModal.onOpen();
             }
             else {
-                console.log("Here is the error ------>", error);
+                toast.error("Something went wrong")
             }
         } finally {
             router.refresh(); // Refreshing the router at the end ensures things get updated (e.g. free generations counter)
