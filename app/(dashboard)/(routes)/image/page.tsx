@@ -27,6 +27,7 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { useProModal } from "@/hooks/use-pro-modal";
+import toast from "react-hot-toast";
 
 // TODO: FIND A WAY TO USE DALL-E-3 AS WELL
 
@@ -57,6 +58,10 @@ const ImagePage = () => {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         console.log(values);
         try{
+            
+            //throw new Error("Error");
+            
+            
             setImages([]); // Resets photos everytime submit is clicked
 
 
@@ -79,7 +84,7 @@ const ImagePage = () => {
                 proModal.onOpen();
             }
             else {
-                console.log("Here is the error ------>", error);
+                toast.error("Something went wrong");
             }
         } finally {
             router.refresh();

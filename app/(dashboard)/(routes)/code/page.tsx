@@ -22,6 +22,7 @@ import { formSchema } from "./constants";
 import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
+import toast from "react-hot-toast";
 
 
 
@@ -89,7 +90,7 @@ const CodePage = () => {
                 proModal.onOpen();
             }
             else {
-                console.log("Here is the error ------>", error);
+                toast.error("Something went wrong");
             }
         } finally {
             router.refresh();

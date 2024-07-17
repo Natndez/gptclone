@@ -20,6 +20,7 @@ import { Typewriter } from "@/components/functional/typewriter"
 
 import { formSchema } from "./constants";
 import { useProModal } from "@/hooks/use-pro-modal";
+import toast from "react-hot-toast";
 
 
 const MusicPage = () => {
@@ -63,7 +64,7 @@ const MusicPage = () => {
                 proModal.onOpen();
             }
             else {
-                console.log("Here is the error ------>", error);
+                toast.error("Something went wrong");
             }
         } finally {
             router.refresh();
