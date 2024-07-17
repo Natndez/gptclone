@@ -24,6 +24,7 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import toast from "react-hot-toast";
 import { error } from "console";
+import { ERROR_MESSAGE } from "@/constants";
 
 
 
@@ -64,7 +65,7 @@ const ChatPage = () => {
         console.log(values);
         try{
             // TO DEBUG TOASTER
-            // throw new Error("Something");
+             throw new Error("Something");
 
 
             // Creating userMessage
@@ -95,7 +96,7 @@ const ChatPage = () => {
                 proModal.onOpen();
             }
             else {
-                toast.error("Something went wrong")
+                toast.error(ERROR_MESSAGE);
             }
         } finally {
             router.refresh(); // Refreshing the router at the end ensures things get updated (e.g. free generations counter)

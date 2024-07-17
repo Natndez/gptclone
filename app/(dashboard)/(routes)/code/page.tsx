@@ -23,6 +23,7 @@ import { cn } from "@/lib/utils";
 import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import toast from "react-hot-toast";
+import { ERROR_MESSAGE } from "@/constants";
 
 
 
@@ -90,7 +91,7 @@ const CodePage = () => {
                 proModal.onOpen();
             }
             else {
-                toast.error("Something went wrong");
+                toast.error(ERROR_MESSAGE);
             }
         } finally {
             router.refresh();
