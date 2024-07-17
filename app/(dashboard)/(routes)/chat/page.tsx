@@ -65,7 +65,7 @@ const ChatPage = () => {
         console.log(values);
         try{
             // TO DEBUG TOASTER
-             throw new Error("Something");
+             //throw new Error("Something");
 
 
             // Creating userMessage
