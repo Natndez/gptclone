@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { ERROR_MESSAGE } from "@/constants";
 
 // Creating tools object (for various functionalities of the "Genie")
 const tools = [
@@ -69,6 +71,8 @@ export const ProModal = () => {
 
 
         } catch (error) {
+            toast.error(ERROR_MESSAGE);
+
             console.log(error, "STRIPE_CLIENT_ERROR"); // Log error if theres an issue subscribing
         } finally {
             setLoading(false); // set loading state back to false
