@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+// The Login/Sign-Up page for Genie
 const LandingPage = () => {
     return (
         <div>
