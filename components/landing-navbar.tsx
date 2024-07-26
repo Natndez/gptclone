@@ -1,7 +1,7 @@
 export const LandingNavbar = () => {
     return (
-        <div>
-            This is the navbar
+        <div className="bg-[#999999] text-center">
+            This is the landing page navbar for now
         </div>
     );
 }
