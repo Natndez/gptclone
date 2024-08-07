@@ -38,7 +38,13 @@ export const LandingNavbar = () => {
                         Get Started
                     </Button>
                 </Link>
+                <Link href={isSignedIn ? "/dashboard" : "/sign-in"}>
+                    <Button variant="premium" className="rounded-full">
+                        Sign In
+                    </Button>
+                </Link>
              </div>
+             
         </nav>
     );
 }
